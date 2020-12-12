@@ -75,7 +75,8 @@ router.get('/usuarios', verificarAuth, async(req, res) => {
 //router.put('/usuario/:id', [verificarAuth, verificarAdministrador], async(req, res) => {
   router.put('/usuario/:id', async(req, res) => {
 
-    let id = req.params.id;
+    const _id = req.params.id;
+    const body = req.body;
     //let body = _.pick(req.body, ['nombre', 'email', 'role', 'pass']);
     const body = req.body;
     if(body.pass){
@@ -84,7 +85,11 @@ router.get('/usuarios', verificarAuth, async(req, res) => {
   
     try {
       // {new:true} nos devuelve el usuario actualizado
-      const usuarioDB = await User.findByIdAndUpdate(id, body, {new: true, runValidators: true});
+      const usuarioDB = await User.findByIdAndUpdate(
+        _id, 
+        body, 
+        {new: true, runValidators: true}
+      );
   
       return res.json(usuarioDB);
   
