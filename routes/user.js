@@ -83,13 +83,14 @@ router.get('/usuarios', verificarAuth, async(req, res) => {
     if(body.pass){
       body.pass = bcrypt.hashSync(req.body.pass, saltRounds);
     }
+    console.log(body.pass);
   
     try {
       // {new:true} nos devuelve el usuario actualizado
       const usuarioDB = await User.findByIdAndUpdate(
         _id, 
         body, 
-        {new: true, runValidators: true}
+        {new: true}
       );
   
       return res.json(usuarioDB);
