@@ -40,6 +40,38 @@ router.post('/nuevo-usuario', async(req, res) => {
     }
 });
 
+// Get con parámetros
+router.get('/usuario/:id', verificarAuth, async(req, res) => {
+
+  const id = req.params.id;
+
+  try {
+    const userDb = await Nota.findOne({id});
+    res.json(userDb);
+  } catch (error) {
+    return res.status(400).json({
+      mensaje: 'Ocurrio un error',
+      error
+    })
+  }
+});
+
+// Get con todos los documentos
+router.get('/usuarios', verificarAuth, async(req, res) => {
+
+  const id = req.params.id;
+
+  try {
+    const userDb = await User.find();
+    res.json(userDb);
+  } catch (error) {
+    return res.status(400).json({
+      mensaje: 'Ocurrio un error',
+      error
+    })
+  }
+});
+
 router.put('/usuario/:id', [verificarAuth, verificarAdministrador], async(req, res) => {
 
     let id = req.params.id;
