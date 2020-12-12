@@ -76,7 +76,9 @@ router.get('/usuarios', verificarAuth, async(req, res) => {
   router.put('/usuario/:id', async(req, res) => {
 
     const _id = req.params.id;
+    console.log(_id);
     const body = req.body;
+    console.log(body);
     //let body = _.pick(req.body, ['nombre', 'email', 'role', 'pass']);
     if(body.pass){
       body.pass = bcrypt.hashSync(req.body.pass, saltRounds);
