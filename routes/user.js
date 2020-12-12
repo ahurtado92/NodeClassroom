@@ -73,7 +73,7 @@ router.get('/usuarios', verificarAuth, async(req, res) => {
 });
 
 //router.put('/usuario/:id', [verificarAuth, verificarAdministrador], async(req, res) => {
-router.put('/usuario/:id', async(req, res) => {
+router.put('/usuario/:id', verificarAuth, async(req, res) => {
 
     const _id = req.params.id;
     const body = req.body;
