@@ -46,7 +46,7 @@ router.get('/usuario/:id', verificarAuth, async(req, res) => {
   const id = req.params.id;
 
   try {
-    const userDb = await Nota.findOne({id});
+    const userDb = await User.findOne({id});
     res.json(userDb);
   } catch (error) {
     return res.status(400).json({
