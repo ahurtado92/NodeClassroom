@@ -8,9 +8,9 @@ const {verificarAuth, verificarAdministrador} = require('../middlewares/autentic
 
 // Post una nota
 router.post('/new-group', verificarAuth, async(req, res) => {
-    console.log(req.usuario._id);
+    //console.log(req.usuario._id);
     const body = req.body;
-    body.usuarioId = req.usuario._id;
+    body.creatorId = req.usuario._id;
     try {
       const groupDB = await Group.create(body);
       res.status(200).json(groupDB); 
