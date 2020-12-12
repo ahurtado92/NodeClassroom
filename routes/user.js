@@ -72,7 +72,8 @@ router.get('/usuarios', verificarAuth, async(req, res) => {
   }
 });
 
-router.put('/usuario/:id', [verificarAuth, verificarAdministrador], async(req, res) => {
+//router.put('/usuario/:id', [verificarAuth, verificarAdministrador], async(req, res) => {
+  router.put('/usuario/:id', [verificarAuth], async(req, res) => {
 
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre', 'email', 'role', 'pass']);
