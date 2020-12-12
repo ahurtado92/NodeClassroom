@@ -41,12 +41,12 @@ router.post('/nuevo-usuario', async(req, res) => {
 });
 
 // Get con parámetros
-router.get('/usuario/:id', verificarAuth, async(req, res) => {
+router.get('/usuario/:id', async(req, res) => {
 
-  const id = req.params.id;
+  const _id = req.params.id;
 
   try {
-    const userDb = await User.findOne({id});
+    const userDb = await User.findOne({_id});
     res.json(userDb);
   } catch (error) {
     return res.status(400).json({
@@ -59,7 +59,7 @@ router.get('/usuario/:id', verificarAuth, async(req, res) => {
 // Get con todos los documentos
 router.get('/usuarios', verificarAuth, async(req, res) => {
 
-  const id = req.params.id;
+ // const id = req.params.id;
 
   try {
     const userDb = await User.find();
