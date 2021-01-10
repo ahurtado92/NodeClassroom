@@ -8,8 +8,8 @@ const bookingSchema = new Schema({
     creatorId: String,
     
     roomId: String,
-    initDate: String,
-    endDate: String,
+    initDate: Date,
+    endDate: Date,
     accessGroups: [],
     modGroups: [],
     accessUsers: [],
