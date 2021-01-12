@@ -3,6 +3,7 @@ const router = express.Router();
 
 // importar el modelo nota
 import Period from '../models/period';
+import Interval from '../models/interval';
 
 const {verificarAuth, verificarAdministrador} = require('../middlewares/autenticacion');
 
@@ -56,19 +57,21 @@ router.get('/periods', verificarAuth, async(req, res) => {
 router.delete('/period/:id', async(req, res) => {
     const _id = req.params.id;
     try {
-      const periodDB = await Period.findByIdAndDelete({_id});
-      if(!periodDB){
-        return res.status(400).json({
-          mensaje: 'No se encontró el id indicado',
-          error
-        })
-      }
-      res.json(periodDB);  
+        //TODO: async await to natural promise
+        Interval.deleteMany({ "periodId" : _id },);
+        const periodDB = await Period.findByIdAndDelete({_id});
+        if(!periodDB){
+            return res.status(400).json({
+                mensaje: 'No se encontró el id indicado',
+                error
+            })
+        }
+        res.json(periodDB);  
     } catch (error) {
-      return res.status(400).json({
-        mensaje: 'Ocurrio un error',
-        error
-      })
+        return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            error
+        })
     }
 });
 
