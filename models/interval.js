@@ -6,6 +6,7 @@ const intervalSchema = new Schema({
     extId: {type: Number, required: [true, 'ID obligatorio.']},
     initDate: String,
     endDate: String,
+    periodId: String,
     creatorId: String,
     date:{type: Date, default: Date.now}
 
