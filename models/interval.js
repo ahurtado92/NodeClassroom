@@ -12,6 +12,6 @@ const intervalSchema = new Schema({
 });
 
 // Convertir a un modelo
-const Interval = mongoose.model('Interval', groupSchema);
+const Interval = mongoose.model('Interval', intervalSchema);
 
 export default Interval;
