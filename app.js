@@ -48,6 +48,7 @@ app.use('/api', require('./routes/room'));
 app.use('/api', require('./routes/booking'));
 app.use('/api', require('./routes/material'));
 app.use('/api', require('./routes/instance'));
+app.use('/api', require('./routes/interval'));
 app.use('/api/login', require('./routes/login'));
 
 // Middleware para Vue.js router modo history
