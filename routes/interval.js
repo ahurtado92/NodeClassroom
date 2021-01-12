@@ -37,7 +37,7 @@ router.get('/interval/:id', async(req, res) => {
 });
   
 // Get con todos los documentos
-router.get('/interval', verificarAuth, async(req, res) => {
+router.get('/intervals', verificarAuth, async(req, res) => {
     //const usuarioId = req.usuario._id;
 
     try {
