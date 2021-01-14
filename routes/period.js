@@ -58,14 +58,29 @@ router.delete('/period/:id', async(req, res) => {
     const _id = req.params.id;
     try {
         //TODO: async await to natural promise
-        Interval.deleteMany({ "periodId" : _id },);
+        /*Interval.deleteMany({ "periodId" : _id },);
         const periodDB = await Period.findByIdAndDelete({_id});
         if(!periodDB){
             return res.status(400).json({
                 mensaje: 'No se encontró el id indicado',
                 error
             })
+        }*/
+        
+        
+        /*UserSchema.pre('deleteOne', { document: false, query: true }, async function() {
+          const doc = await this.model.findOne(this.getFilter());
+          await UserLink.deleteMany({ user: doc._id });
+        });*/
+        
+        const periodDB = await Period.findByIdAndRemove(id);
+    
+        if(!periodDB){
+          return res.status(400).json({
+            mensaje: 'No se encontró el id indicado'
+          })
         }
+        
         res.json(periodDB);  
     } catch (error) {
         return res.status(400).json({
