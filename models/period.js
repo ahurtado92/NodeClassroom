@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
-import Interval from '../models/interval';
+import Interval from './interval';
 
 const periodSchema = new Schema({
 
