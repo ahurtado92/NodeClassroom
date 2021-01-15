@@ -18,7 +18,7 @@ periodSchema.pre('remove', function(next) {
     //Interval.remove({periodId: this._id}).exec();
     //console.log("Removing!" + this._id);
     //next();
-    console.log("Removing!");
+    await console.log("Removing!");
     next();
 });
 
