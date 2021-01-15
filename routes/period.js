@@ -58,9 +58,9 @@ router.delete('/period/:id', async(req, res, next) => {
     const _id = req.params.id;
     try {
         //TODO: async await to natural promise
-        Period.findById(_id,function(err,period){
+        await Period.findById(_id,function(err,period){
           if(err) return next(err);
-          const periodDB = await Pperiod.remove()
+          const periodDB = Period.remove()
           
           res.json(periodDB); 
         })
