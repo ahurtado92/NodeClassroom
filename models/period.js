@@ -30,11 +30,11 @@ periodSchema.pre('remove', async function(next) {
     //next();
     try {
         await function(){
-            Interval.remove({
+            /*Interval.remove({
                 "_id": {
                 $in: this.intervals
                 }
-            })
+            })*/
             console.log("Remooooooviiiiiing!!")
         }
         next();
