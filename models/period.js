@@ -12,7 +12,7 @@ const periodSchema = new Schema({
 
 });
 
-periodSchema.pre('foad', function(next) {
+periodSchema.pre('remove', function(next) {
     // 'this' is the client being removed. Provide callbacks here if you want
     // to be notified of the calls' result.
     //Interval.remove({periodId: this._id}).exec();

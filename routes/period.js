@@ -75,7 +75,7 @@ router.delete('/period/:id', async(req, res) => {
         
         //const periodDB = await Period.findByIdAndRemove(_id);
         console.log('Erasing!');
-        const periodDB = await Period.foad(_id);
+        const periodDB = await Period.findByIdAndRemove("123");
         console.log('Erased!');
 
     
