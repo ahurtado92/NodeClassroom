@@ -11,33 +11,11 @@ const periodSchema = new Schema({
     creatorId: String,
     date:{type: Date, default: Date.now},
 
-    /*intervals: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Interval"
-        }
-        
-    ]*/
-
 });
 
 periodSchema.pre('remove', async function() {
-    // 'this' is the client being removed. Provide callbacks here if you want
-    // to be notified of the calls' result.
-    //Interval.remove({periodId: this._id}).exec();
-    //console.log("Removing!" + this._id);
-    //next();
-    //console.log("Removing!");
-    //next();
     try {
-        /*await Interval.remove({
-                "_id": {
-                $in: this.intervals
-                }
-            })
-            //console.log("Remooooooviiiiiing!!")*/
         await Interval.deleteMany({periodId: this._id});
-        //next();
     } catch(err) {
         console.log(err);
         next(err);
