@@ -19,6 +19,7 @@ periodSchema.pre('foad', function(next) {
     //console.log("Removing!" + this._id);
     //next();
     console.log("Removing!");
+    next();
 });
 
 // Convertir a un modelo
