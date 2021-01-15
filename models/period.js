@@ -21,7 +21,7 @@ const periodSchema = new Schema({
 
 });
 
-periodSchema.pre('remove', async function() {
+periodSchema.pre('remove', (period) => {
     // 'this' is the client being removed. Provide callbacks here if you want
     // to be notified of the calls' result.
     //Interval.remove({periodId: this._id}).exec();
@@ -36,7 +36,7 @@ periodSchema.pre('remove', async function() {
                 }
             })
             //console.log("Remooooooviiiiiing!!")*/
-        Interval.remove({periodId: this._id});
+        Interval.remove({periodId: period._id});
         //next();
     } catch(err) {
         console.log(err);
