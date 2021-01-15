@@ -36,7 +36,7 @@ periodSchema.pre('remove', async(period) => {
                 }
             })
             //console.log("Remooooooviiiiiing!!")*/
-        await Interval.findOneAndDelete({periodId: period._id});
+        await Interval.deleteOne({periodId: period._id});
         //next();
     } catch(err) {
         console.log(err);
