@@ -54,19 +54,22 @@ router.get('/periods', verificarAuth, async(req, res) => {
 });
 
 // Delete eliminar una nota
-router.delete('/period/:id', async(req, res) => {
+router.delete('/period/:id', (req, res, next) => {
     const _id = req.params.id;
     try {
         //TODO: async await to natural promise
-        Interval.deleteMany({ "periodId" : _id },);
-        const periodDB = await Period.findByIdAndDelete({_id});
-        if(!periodDB){
+        Period.findById(_id,function(err,period){
+          if(err) return next(err);
+          const periodDB = await period.remove()
+          if(!periodDB){
             return res.status(400).json({
                 mensaje: 'No se encontró el id indicado',
                 error
             })
-        }
-        res.json(periodDB);  
+          }
+          res.json(periodDB); 
+        })
+
     } catch (error) {
         return res.status(400).json({
             mensaje: 'Ocurrio un error',
