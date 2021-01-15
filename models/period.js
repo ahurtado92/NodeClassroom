@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
-import Interval from './interval';
+//import Interval from './interval';
+var Interval = require('./interval');
 
 const periodSchema = new Schema({
 
