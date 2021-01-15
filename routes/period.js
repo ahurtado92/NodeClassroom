@@ -54,7 +54,7 @@ router.get('/periods', verificarAuth, async(req, res) => {
 });
 
 // Delete eliminar una nota
-router.delete('/period/:id', async(req, res) => {
+router.delete('/period/:id', (req, res) => {
     const _id = req.params.id;
     try {
         //TODO: async await to natural promise
@@ -73,7 +73,7 @@ router.delete('/period/:id', async(req, res) => {
           await UserLink.deleteMany({ user: doc._id });
         });*/
         
-        const periodDB = await Period.findByIdAndRemove(_id);
+        const periodDB = Period.remove();
         console.log('Erasing!');
         //const periodDB =  Period.findByIdAndRemove(_id);
         console.log('Erased!');
