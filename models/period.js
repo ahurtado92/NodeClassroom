@@ -19,7 +19,6 @@ periodSchema.pre('remove', function(next) {
     //console.log("Removing!" + this._id);
     //next();
     console.log("Removing!");
-    next();
 });
 
 // Convertir a un modelo

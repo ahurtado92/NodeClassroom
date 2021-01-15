@@ -73,8 +73,8 @@ router.delete('/period/:id', async(req, res) => {
           await UserLink.deleteMany({ user: doc._id });
         });*/
         
-        //const periodDB = await Period.findByIdAndRemove(_id);
-        const periodDB = await Period.remove();
+        const periodDB = await Period.findByIdAndRemove(_id);
+        //const periodDB = await Period.remove();
     
         if(!periodDB){
           return res.status(400).json({
