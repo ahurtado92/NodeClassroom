@@ -8,7 +8,15 @@ const periodSchema = new Schema({
     initDate: Date,
     endDate: Date,
     creatorId: String,
-    date:{type: Date, default: Date.now}
+    date:{type: Date, default: Date.now},
+
+    intervals: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Interval"
+        }
+        
+    ]
 
 });
 
@@ -21,7 +29,11 @@ periodSchema.pre('remove', async function(next) {
     //console.log("Removing!");
     //next();
     try {
-        await console.log("Removing!!!!");
+        await Interval.remove({
+            "_id": {
+            $in: this.intervals
+            }
+        })
         next();
     } catch(err) {
         next(err);
