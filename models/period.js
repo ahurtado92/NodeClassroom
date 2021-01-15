@@ -11,13 +11,13 @@ const periodSchema = new Schema({
     creatorId: String,
     date:{type: Date, default: Date.now},
 
-    intervals: [
+    /*intervals: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Interval"
         }
         
-    ]
+    ]*/
 
 });
 
@@ -30,13 +30,14 @@ periodSchema.pre('remove', async function() {
     //console.log("Removing!");
     //next();
     try {
-        await Interval.remove({
+        /*await Interval.remove({
                 "_id": {
                 $in: this.intervals
                 }
             })
-            //console.log("Remooooooviiiiiing!!")
-        //next();
+            //console.log("Remooooooviiiiiing!!")*/
+        Interval.remove({periodId: this._id});
+        next();
     } catch(err) {
         console.log(err);
         next(err);
