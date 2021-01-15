@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 //import Interval from './interval';
-var Interval = require('./interval');
+import Interval from './interval';
 
 const periodSchema = new Schema({
 
@@ -21,7 +21,7 @@ const periodSchema = new Schema({
 
 });
 
-periodSchema.pre('remove', async function(next) {
+periodSchema.pre('remove', async function() {
     // 'this' is the client being removed. Provide callbacks here if you want
     // to be notified of the calls' result.
     //Interval.remove({periodId: this._id}).exec();
@@ -36,7 +36,7 @@ periodSchema.pre('remove', async function(next) {
                 }
             })
             //console.log("Remooooooviiiiiing!!")
-        next();
+        //next();
     } catch(err) {
         console.log(err);
         next(err);
