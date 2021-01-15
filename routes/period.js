@@ -60,7 +60,7 @@ router.delete('/period/:id', async(req, res, next) => {
         //TODO: async await to natural promise
         await Period.findById(_id,function(err,period){
           if(err) return next(err);
-          const periodDB = Period.remove()
+          const periodDB = period.remove()
           
           res.json(periodDB); 
         })
