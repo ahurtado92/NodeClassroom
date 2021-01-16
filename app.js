@@ -2,6 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
+import moment from 'moment';
+moment().format(); 
 
 const app = express();
 
