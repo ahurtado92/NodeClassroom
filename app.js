@@ -5,6 +5,8 @@ import path from 'path';
 import moment from 'moment';
 moment().format(); 
 
+//console.log(moment().weekday(15));
+
 const app = express();
 
 // Conexión a DB
@@ -52,6 +54,7 @@ app.use('/api', require('./routes/material'));
 app.use('/api', require('./routes/instance'));
 app.use('/api', require('./routes/interval'));
 app.use('/api', require('./routes/period'));
+app.use('/api', require('./routes/csvload'));
 app.use('/api/login', require('./routes/login'));
 
 // Middleware para Vue.js router modo history
