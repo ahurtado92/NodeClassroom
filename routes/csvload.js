@@ -1,6 +1,8 @@
 import express from 'express';
 const router = express.Router();
 
+const {verificarAuth, verificarAdministrador} = require('../middlewares/autenticacion');
+
 // Post csv
 router.post('/csv-load', verificarAuth, async(req, res) => {
     const body = req.body;
@@ -16,3 +18,6 @@ router.post('/csv-load', verificarAuth, async(req, res) => {
       })
     }
 });
+
+// Exportamos la configuración de express app
+module.exports = router;
