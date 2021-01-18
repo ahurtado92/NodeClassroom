@@ -15,8 +15,9 @@ router.post('/csv-load', verificarAuth, async(req, res) => {
       //res.status(200).json(eventDB); 
       //await console.log(body)
       body.forEach(element => {
-        console.log(element.classroom)
-        //const room = Room.findOne({name: element.classroom});
+        //console.log(element.classroom)
+        const room = Room.findOne({name: element.classroom});
+        console.log(room)
         //query.id = element.id;
         //query.roomId = room._id;
         //console.log(query);
