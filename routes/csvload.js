@@ -11,11 +11,7 @@ router.post('/csv-load', verificarAuth, async(req, res) => {
       //const eventDB = await Event.create(body);
       //res.status(200).json(eventDB); 
       //await console.log(body)
-      await function() {
-        console.log(body)
-        res.status(200).json(body);
-      }
-      //await res.status(200).json(body);
+      await res.status(200).json(body);
     } catch (error) {
       return res.status(500).json({
         mensaje: 'Ocurrio un error',
