@@ -9,10 +9,14 @@ const {verificarAuth, verificarAdministrador} = require('../middlewares/autentic
 router.post('/csv-load', verificarAuth, async(req, res) => {
     const body = req.body;
     body.usuarioId = req.usuario._id;
-    const rooms = async () => {
-      await getRooms();
-      console.log(rooms);
+    const rooms = async function(){
+      try{
+        return await Room.find({});
+      } catch(error){
+        console.log("Error: " + error);
+      }
     }
+    console.log(this.rooms);
     var query = [];
     try {
       //const eventDB = await Event.create(body);
