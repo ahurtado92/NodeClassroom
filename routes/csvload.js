@@ -11,6 +11,9 @@ router.post('/csv-load', verificarAuth, async(req, res) => {
       //const eventDB = await Event.create(body);
       //res.status(200).json(eventDB); 
       //await console.log(body)
+      body.forEach(element => {
+        console.log(element)
+      });
       await res.status(200).json(body);
     } catch (error) {
       return res.status(500).json({
