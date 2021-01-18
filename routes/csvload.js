@@ -1,7 +1,6 @@
 import express from 'express';
 const router = express.Router();
 
-import Room from '../models/room';
 
 const {verificarAuth, verificarAdministrador} = require('../middlewares/autenticacion');
 
@@ -9,21 +8,14 @@ const {verificarAuth, verificarAdministrador} = require('../middlewares/autentic
 router.post('/csv-load', verificarAuth, async(req, res) => {
     const body = req.body;
     body.usuarioId = req.usuario._id;
-    const rooms = function(){
-      try{
-        return Room.find({});
-      } catch(error){
-        console.log("Error: " + error);
-      }
-    }
-    console.log(this.rooms);
+    
     var query = [];
     try {
       //const eventDB = await Event.create(body);
       //res.status(200).json(eventDB); 
       //await console.log(body)
       body.forEach(element => {
-        //console.log(element.classroom)
+        console.log(element.classroom)
         //const roomName = element.classroom
         //console.log(rooms.name)
         //query.id = element.id;
