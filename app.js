@@ -54,6 +54,7 @@ app.use('/api', require('./routes/material'));
 app.use('/api', require('./routes/instance'));
 app.use('/api', require('./routes/interval'));
 app.use('/api', require('./routes/period'));
+app.use('/api', require('./routes/subject'));
 app.use('/api', require('./routes/csvload'));
 app.use('/api/login', require('./routes/login'));
 
