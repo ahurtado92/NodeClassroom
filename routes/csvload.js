@@ -33,8 +33,12 @@ router.post('/csv-load', verificarAuth, async(req, res) => {
     }
 });
 
-function getRooms(){
-  return Room.find({});
+async function getRooms(){
+  try{
+    return await Room.find({});
+  } catch(error){
+    console.log(error)
+  }
 }
 
 // Exportamos la configuración de express app
