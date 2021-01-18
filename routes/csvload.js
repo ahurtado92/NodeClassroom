@@ -37,7 +37,7 @@ async function getRooms(){
   try{
     return await Room.find({});
   } catch(error){
-    console.log(error)
+    console.log("Error: " + error);
   }
 }
 
