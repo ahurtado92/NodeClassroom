@@ -16,7 +16,8 @@ router.post('/csv-load', verificarAuth, async(req, res) => {
       //await console.log(body)
       body.forEach(element => {
         //console.log(element.classroom)
-        const room = Room.findOne({name: element.classroom});
+        const roomName = element.classroom
+        const room = Room.findOne({name: {$eq: roomName}});
         console.log(room)
         //query.id = element.id;
         //query.roomId = room._id;
