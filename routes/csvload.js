@@ -9,6 +9,8 @@ const {verificarAuth, verificarAdministrador} = require('../middlewares/autentic
 router.post('/csv-load', verificarAuth, async(req, res) => {
     const body = req.body;
     body.usuarioId = req.usuario._id;
+    const rooms = getRooms();
+    console.log(rooms);
     var query = [];
     try {
       //const eventDB = await Event.create(body);
@@ -16,9 +18,8 @@ router.post('/csv-load', verificarAuth, async(req, res) => {
       //await console.log(body)
       body.forEach(element => {
         //console.log(element.classroom)
-        const roomName = element.classroom
-        const room = await Room.find();
-        console.log(room.name)
+        //const roomName = element.classroom
+        //console.log(rooms.name)
         //query.id = element.id;
         //query.roomId = room._id;
         //console.log(query);
@@ -31,6 +32,10 @@ router.post('/csv-load', verificarAuth, async(req, res) => {
       })
     }
 });
+
+function getRooms(){
+  return Room.find({});
+}
 
 // Exportamos la configuración de express app
 module.exports = router;
