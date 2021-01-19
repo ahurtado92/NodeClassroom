@@ -9,7 +9,7 @@ const {verificarAuth, verificarAdministrador} = require('../middlewares/autentic
 // Post una nota
 router.post('/new-booking', verificarAuth, async(req, res) => {
     const body = req.body;
-    body.usuarioId = req.usuario._id;
+    body.creatorId = req.usuario._id;
     try {
       const bookingDB = await Booking.create(body);
       res.status(200).json(bookingDB); 

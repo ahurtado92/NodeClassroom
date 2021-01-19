@@ -6,7 +6,6 @@ const bookingSchema = new Schema({
     name: {type: String, required: [true, 'Nombre obligatorio.']},
     description: String,
     creatorId: String,
-    
     roomId: String,
     initDate: Date,
     endDate: Date,
