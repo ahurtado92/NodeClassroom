@@ -12,12 +12,12 @@ const bookingSchema = new Schema({
     initDate: Date,
     endDate: Date,
 
-    //accessGroups: [],
-    //modGroups: [],
-    //accessUsers: [],
-    //modUsers: [],
+    accessGroups: [],
+    modGroups: [],
+    accessUsers: [],
+    modUsers: [],
     color: String,
-    //material: [],
+    material: [],
     date:{type: Date, default: Date.now}
 
 });
