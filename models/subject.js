@@ -7,6 +7,7 @@ const subjectSchema = new Schema({
     description: String,
     color: String,
     creatorId: String,
+    color: String,
     date:{type: Date, default: Date.now}
 
 });
