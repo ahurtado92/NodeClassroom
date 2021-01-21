@@ -43,7 +43,8 @@ router.get('/bookings', verificarAuth, async(req, res) => {
 
     try {
       const group = await Group.find({"members" : creatorId});
-      const bookingDB = await Booking.find({creatorId, group});
+      //const bookingDB = await Booking.find({creatorId});
+      const bookingDB = await Booking.find( { $or:[ {'creatorId':creatorId}, {'group':group._id} ]}, 
       res.json(bookingDB);
     } catch (error) {
       return res.status(400).json({
