@@ -39,11 +39,11 @@ router.get('/booking/:id', async(req, res) => {
   
 // Get con todos los documentos
 router.get('/bookings', verificarAuth, async(req, res) => {
-    const usuarioId = req.usuario._id;
+    const creatorId = req.usuario._id;
 
     try {
       //const groupDb = await Group.find({usuarioId});
-      const bookingDB = await Booking.find({usuarioId});
+      const bookingDB = await Booking.find({creatorId});
       res.json(bookingDB);
     } catch (error) {
       return res.status(400).json({
