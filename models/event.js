@@ -17,7 +17,7 @@ const eventSchema = new Schema({
 
 });
 
-periodSchema.pre('remove', async function() {
+eventSchema.pre('remove', async function() {
     try {
         await Booking.deleteMany({extId: this.extId});
     } catch(err) {
