@@ -1,8 +1,8 @@
 import express from 'express';
 const router = express.Router();
 
-// importar el modelo nota
 import Booking from '../models/booking';
+import Group from '../models/group';
 
 const {verificarAuth, verificarAdministrador} = require('../middlewares/autenticacion');
 
@@ -42,8 +42,8 @@ router.get('/bookings', verificarAuth, async(req, res) => {
     const creatorId = req.usuario._id;
 
     try {
-      //const groupDb = await Group.find({usuarioId});
-      const bookingDB = await Booking.find({creatorId});
+      const group = await Group.find({creatorId});
+      const bookingDB = await Booking.find({creatorId,group});
       res.json(bookingDB);
     } catch (error) {
       return res.status(400).json({
