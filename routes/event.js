@@ -37,11 +37,11 @@ router.get('/event/:id', async(req, res) => {
   
 // Get con todos los documentos
 router.get('/events', verificarAuth, async(req, res) => {
-    //const usuarioId = req.usuario._id;
+    const creatorId = req.usuario._id;
 
     try {
       //const groupDb = await Group.find({usuarioId});
-      const eventDB = await Event.find({});
+      const eventDB = await Event.find({creatorId});
       res.json(eventDB);
     } catch (error) {
       return res.status(400).json({

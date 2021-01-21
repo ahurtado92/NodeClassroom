@@ -55,14 +55,22 @@ router.get('/rooms', verificarAuth, async(req, res) => {
 router.delete('/room/:id', async(req, res) => {
     const _id = req.params.id;
     try {
-      const roomDB = await Room.findByIdAndDelete({_id});
+      /*const roomDB = await Room.findByIdAndDelete({_id});
       if(!roomDB){
         return res.status(400).json({
           mensaje: 'No se encontró el id indicado',
           error
         })
       }
-      res.json(roomDB);  
+      res.json(roomDB);*/
+
+      await Room.findById(_id,function(err,room){
+        if(err) return next(err);
+        const roomDB = room.remove()
+        
+        res.json(roomDB); 
+      })
+
     } catch (error) {
       return res.status(400).json({
         mensaje: 'Ocurrio un error',
