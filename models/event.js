@@ -11,8 +11,8 @@ const eventSchema = new Schema({
     creatorId: String,
     subject: String,
     roomId: String,
-    weekday: Number,
-    interval: Number,
+    weekday: String,
+    interval: String,
     date:{type: Date, default: Date.now}
 
 });
