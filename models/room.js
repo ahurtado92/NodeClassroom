@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 import Event from './event';
+import Booking from './booking';
 
 const roomSchema = new Schema({
 
@@ -19,6 +20,7 @@ const roomSchema = new Schema({
 roomSchema.pre('remove', async function() {
     try {
         await Event.deleteMany({roomId: this._id});
+        await Booking.deleteMany({roomId: this._id});
     } catch(err) {
         console.log(err);
         next(err);
