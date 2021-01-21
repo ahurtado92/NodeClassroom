@@ -1,14 +1,29 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+import Booking from './booking';
 
 const eventSchema = new Schema({
 
-    name: {type: String, required: [true, 'Nombre obligatorio.']},
-    description: String,
+    //name: {type: String, required: [true, 'Nombre obligatorio.']},
+    //description: String,
+    extId: {type: String, unique: [true, 'Campo unico.'], required: [true, 'Nombre obligatorio.']},
+    group: String,
     creatorId: String,
-    isSubject: {type: Boolean, default: false},
+    subject: String,
+    roomId: String,
+    weekday: Number,
+    interval: Number,
     date:{type: Date, default: Date.now}
 
+});
+
+periodSchema.pre('remove', async function() {
+    try {
+        await Booking.deleteMany({extId: this.extId});
+    } catch(err) {
+        console.log(err);
+        next(err);
+    }
 });
 
 // Convertir a un modelo

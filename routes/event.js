@@ -55,20 +55,48 @@ router.get('/events', verificarAuth, async(req, res) => {
 router.delete('/event/:id', async(req, res) => {
     const _id = req.params.id;
     try {
-      const eventDB = await Event.findByIdAndDelete({_id});
+      /*const eventDB = await Event.findByIdAndDelete({_id});
       if(!eventDB){
         return res.status(400).json({
           mensaje: 'No se encontró el id indicado',
           error
         })
       }
-      res.json(eventDb);  
+      res.json(eventDb); */
+      
+      await Event.findById(_id,function(err,event){
+        if(err) return next(err);
+        const eventDB = event.remove()
+        
+        res.json(eventDB); 
+      })
+
+
     } catch (error) {
       return res.status(400).json({
         mensaje: 'Ocurrio un error',
         error
       })
     }
+
+
+
+
+    try {
+      //TODO: async await to natural promise
+      await Period.findById(_id,function(err,period){
+        if(err) return next(err);
+        const periodDB = period.remove()
+        
+        res.json(periodDB); 
+      })
+
+  } catch (error) {
+      return res.status(400).json({
+          mensaje: 'Ocurrio un error',
+          error
+      })
+  }
 });
 
 // Put actualizar una nota
