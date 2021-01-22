@@ -21,7 +21,8 @@ router.post('/nuevo-usuario', async(req, res) => {
         birth: req.body.birth,
         email: req.body.email,
         uname: req.body.uname,
-        avatar: req.body.avatar
+        group: req.body.group,
+        avatar: req.body.avatar,
     }
 
     body.pass = bcrypt.hashSync(req.body.pass, saltRounds);
