@@ -37,41 +37,37 @@ router.get('/event/:id', async(req, res) => {
   
 // Get con todos los documentos
 router.get('/events', verificarAuth, async(req, res) => {
-    const creatorId = req.usuario._id;
+  const role = req.usuario.role;
+  const creatorId = req.usuario._id
+  let eventDB;
 
-    try {
-      //const groupDb = await Group.find({usuarioId});
-      const eventDB = await Event.find({creatorId});
-      res.json(eventDB);
-    } catch (error) {
-      return res.status(400).json({
-        mensaje: 'Ocurrio un error',
-        error
-      })
+  try {
+    if(role == 'TEACHER'){
+      eventDB = await Event.find({creatorId});
+    }else{
+      eventDB = await Event.find({});
     }
+
+    //const eventDB = await Event.find({creatorId: { $in: cid }});
+    res.json(eventDB);
+  } catch (error) {
+    return res.status(400).json({
+      mensaje: 'Ocurrio un error',
+      error
+    })
+  }
 });
 
 // Delete eliminar una nota
 router.delete('/event/:id', async(req, res) => {
     const _id = req.params.id;
     try {
-      /*const eventDB = await Event.findByIdAndDelete({_id});
-      if(!eventDB){
-        return res.status(400).json({
-          mensaje: 'No se encontró el id indicado',
-          error
-        })
-      }
-      res.json(eventDb); */
-      
       await Event.findById(_id,function(err,event){
         if(err) return next(err);
         const eventDB = event.remove()
         
         res.json(eventDB); 
       })
-
-
     } catch (error) {
       return res.status(400).json({
         mensaje: 'Ocurrio un error',
