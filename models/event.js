@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+const uniqueValidator = require('mongoose-unique-validator');
+
 const Schema = mongoose.Schema;
 import Booking from './booking';
 
