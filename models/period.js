@@ -22,6 +22,10 @@ periodSchema.pre('remove', async function() {
     }
 });
 
+
+// Validator
+userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
+
 // Convertir a un modelo
 const Period = mongoose.model('Period', periodSchema);
 

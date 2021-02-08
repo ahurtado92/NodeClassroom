@@ -15,6 +15,9 @@ const instanceSchema = new Schema({
 
 });
 
+// Validator
+userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
+
 // Convertir a un modelo
 const Instance = mongoose.model('Instance', instanceSchema);
 

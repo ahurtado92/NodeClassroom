@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const subjectSchema = new Schema({
 
-    name: {type: String, required: [true, 'Nombre obligatorio.']},
+    name: {type: String, unique: [true, 'Campo unico.'], required: [true, 'Nombre obligatorio.']},
     description: String,
     color: String,
     creatorId: String,
@@ -11,6 +11,9 @@ const subjectSchema = new Schema({
     date:{type: Date, default: Date.now}
 
 });
+
+// Validator
+userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
 
 // Convertir a un modelo
 const Subject = mongoose.model('Subject', subjectSchema);

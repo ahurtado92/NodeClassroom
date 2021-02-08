@@ -26,6 +26,9 @@ eventSchema.pre('remove', async function() {
     }
 });
 
+// Validator
+userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
+
 // Convertir a un modelo
 const Event = mongoose.model('Event', eventSchema);
 

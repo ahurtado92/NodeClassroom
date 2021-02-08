@@ -5,7 +5,7 @@ import Booking from './booking';
 
 const roomSchema = new Schema({
 
-    name: {type: String, required: [true, 'Nombre obligatorio.']},
+    name: {type: String, unique: [true, 'Campo unico.'], required: [true, 'Nombre obligatorio.']},
     description: String,
     creatorId: String,
     supervisorId: String,
@@ -26,6 +26,9 @@ roomSchema.pre('remove', async function() {
         next(err);
     }
 });
+
+// Validator
+userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
 
 // Convertir a un modelo
 const Room = mongoose.model('Room', roomSchema);

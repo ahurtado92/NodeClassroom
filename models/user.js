@@ -11,14 +11,14 @@ const roles = {
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  role: { type: String, default: 'USER', enum: roles },
+  role: { type: String, default: 'USER', enum: roles, required: [true, 'El rol es necesario'] },
   activo: { type: Boolean, default: true },
   nombre: { type: String, required: [true, 'El nombre es necesario'] },
   apellidos: {type: String},
   phone: {type: String},
   birth: {type: String},
   email: { type: String, unique: true, required: [true, 'Email es necesario'] },
-  uname: {type: String, unique: true, required: [true, 'Username is necessary'] },
+  uname: {type: String, unique: true, required: [true, 'El nombre de usuario es necesario'] },
   pass: { type: String, required: [true, 'Pass es necesario'] },
   group: {type: String},
   avatar: {type: String, default: '/public/img/avatar/default.jpg',},

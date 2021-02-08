@@ -22,6 +22,9 @@ const bookingSchema = new Schema({
 
 });
 
+// Validator
+userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
+
 // Convertir a un modelo
 const Booking = mongoose.model('Booking', bookingSchema);
 
