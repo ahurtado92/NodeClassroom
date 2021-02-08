@@ -36,6 +36,20 @@ router.get('/booking/:id', async(req, res) => {
       })
     }
 });
+
+// Get con parámetros
+router.get('/bookingsByRoom/:id', async(req, res) => {
+  const roomId = req.params.roomId;
+  try {
+    const bookingDB = await Booking.find({roomId});
+    res.json(bookingDB);
+  } catch (error) {
+    return res.status(400).json({
+      mensaje: 'Ocurrio un error',
+      error
+    })
+  }
+});
   
 // Get con todos los documentos
 router.get('/bookings', verificarAuth, async(req, res) => {
@@ -52,7 +66,6 @@ router.get('/bookings', verificarAuth, async(req, res) => {
       }else{
         bookingDB = await Booking.find({});
       }
-
       //const bookingDB = await Booking.find( { $or:[ {'creatorId':creatorId}, {'group':group} ] });
       res.json(bookingDB);
     } catch (error) {
