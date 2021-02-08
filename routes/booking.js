@@ -38,7 +38,7 @@ router.get('/booking/:id', async(req, res) => {
 });
 
 // Get con parámetros
-router.get('/bookingsByRoom/:id', async(req, res) => {
+router.get('/bookingsByRoom/:roomId', async(req, res) => {
   const roomId = req.params.roomId;
   try {
     const bookingDB = await Booking.find({roomId});
