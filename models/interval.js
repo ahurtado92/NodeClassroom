@@ -13,7 +13,7 @@ const intervalSchema = new Schema({
 });
 
 // Validator
-userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
+intervalSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
 
 // Convertir a un modelo
 const Interval = mongoose.model('Interval', intervalSchema);

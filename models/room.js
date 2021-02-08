@@ -28,7 +28,7 @@ roomSchema.pre('remove', async function() {
 });
 
 // Validator
-userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
+roomSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
 
 // Convertir a un modelo
 const Room = mongoose.model('Room', roomSchema);

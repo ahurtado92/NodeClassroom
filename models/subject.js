@@ -13,7 +13,7 @@ const subjectSchema = new Schema({
 });
 
 // Validator
-userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
+subjectSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
 
 // Convertir a un modelo
 const Subject = mongoose.model('Subject', subjectSchema);
