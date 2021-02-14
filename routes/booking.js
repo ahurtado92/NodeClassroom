@@ -63,6 +63,8 @@ router.get('/bookings', verificarAuth, async(req, res) => {
 
       if(role == 'TEACHER'){
         bookingDB = await Booking.find( { $or:[ {'creatorId':creatorId}, {'group':group} ] });
+      }else if (role == 'USER') {
+        bookingDB = await Booking.find( {'group':group} );
       }else{
         bookingDB = await Booking.find({});
       }
