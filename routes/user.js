@@ -59,14 +59,12 @@ router.get('/usuarios', verificarAuth, async(req, res) => {
   const _id = req.usuario._id;
   const role = req.usuario.role;
   const dist = [];
-  console.log(role)
   if(role == 'TEACHER'){
     dist.push('ADMIN')
     console.log('is teacher!')
   }
   try {
     //const userDb = await User.find();
-    console.log(dist)
     const userDb = await User.find({ role: { $nin: dist } });
     res.json(userDb);
   } catch (error) {
